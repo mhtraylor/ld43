@@ -118,6 +118,22 @@ public class PlayerController : MonoBehaviour
 		// Set strafing flag
 		_isStrafing = Input.GetKey(KeyCode.LeftShift);
 
+		if (Input.GetKey(KeyCode.Space))
+		{
+			if (IsFacingLeft() || IsFacingRight())
+			{
+				animator.SetBool("isSwingingSwordHorizontal", true);
+			}
+			else if (IsFacingDown())
+			{
+				animator.SetBool("isSwingingSwordDown", true);
+			}
+			else if (IsFacingUp())
+			{
+				animator.SetBool("isSwingingSwordUp", true);
+			}
+		}
+
 		// If move right input is called
 		if (Input.GetKey(KeyCode.D))
 		{
