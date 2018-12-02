@@ -136,8 +136,11 @@ public class PlayerController : MonoBehaviour
 				_normalizedHorizontalSpeed = 1;
 				if (!IsFacingRight() && !_isStrafing && _normalizedVerticalSpeed == 0)
 					SetFacingDirectionRight();
-
-				animator.SetBool("isWalkingHorizontal", true);
+				if (!GameManager.IsPaused)
+				{
+					animator.SetBool("isWalkingHorizontal", true);
+				}
+				
 			}
 		}
 		// If move left input is called
@@ -151,14 +154,21 @@ public class PlayerController : MonoBehaviour
 			_normalizedHorizontalSpeed = -1;
 			if(!IsFacingLeft() && !_isStrafing && _normalizedVerticalSpeed == 0)
 				SetFacingDirectionLeft();
-
-			animator.SetBool("isWalkingHorizontal", true);
+			if (!GameManager.IsPaused)
+			{
+				animator.SetBool("isWalkingHorizontal", true);
+			}
 		}
 		// No horizontal input was received
 		else
 		{
 			_normalizedHorizontalSpeed = 0;
-			animator.SetBool("isWalkingHorizontal", false);
+
+			if (!GameManager.IsPaused)
+			{
+				animator.SetBool("isWalkingHorizontal", false);
+			}
+
 		}
 
 		// If move up input is called
@@ -180,7 +190,11 @@ public class PlayerController : MonoBehaviour
 				if (!IsFacingUp() && !_isStrafing && _normalizedHorizontalSpeed == 0)
 					SetFacingDirectionUp();
 				
-				animator.SetBool("isWalkingUp", true);
+				if (!GameManager.IsPaused)
+				{
+					animator.SetBool("isWalkingUp", true);
+				}
+				
 			}
 		}
 		// If move down input is called
@@ -195,7 +209,11 @@ public class PlayerController : MonoBehaviour
 			if (!IsFacingDown() && !_isStrafing && _normalizedHorizontalSpeed == 0)
 				SetFacingDirectionDown();
 
-			animator.SetBool("isWalkingDown", true);
+			if (!GameManager.IsPaused)
+			{
+				animator.SetBool("isWalkingDown", true);
+			}
+			
 		}
 		// No vertical input was received
 		else

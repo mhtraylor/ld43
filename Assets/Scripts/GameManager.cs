@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public static void PauseGame() {
+		Time.timeScale = 0;
 		IsPaused = true;
 	}
 
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public static void ResumeGame() {
+		Time.timeScale = 1;
 		IsPaused = false;
 	}
 
